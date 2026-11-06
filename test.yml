@@ -7,7 +7,7 @@
   tasks:
     - name: Create VLAN 10
       cisco.ios.ios_vlan:
-        vlan_id:70
+        vlan_id: 70
         name: Data_Network
         state: present
 
