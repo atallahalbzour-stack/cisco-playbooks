@@ -1,0 +1,16 @@
+---
+- name: Test Cisco Switch Connection
+  hosts: all
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Run show version command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: output
+
+    - name: Display output
+      debug:
+        var: output.stdout_lines
