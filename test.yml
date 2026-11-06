@@ -1,5 +1,5 @@
 ---
-- name: Create New VLAN 10 on All Switches
+- name: Create New VLAN 70 on All Switches
   hosts: all
   gather_facts: no
   connection: network_cli
