@@ -5,9 +5,11 @@
   connection: network_cli
 
   tasks:
-    - name: Configure VLAN 70 via CLI
-      cisco.ios.ios_config:
-        lines:
+    - name: Create VLAN 70 and save config
+      cisco.ios.ios_command:
+        commands:
+          - configure terminal
           - vlan 70
           - name Data_Network
-        save_when: always
+          - end
+          - write memory
