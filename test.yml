@@ -1,16 +1,16 @@
 ---
-- name: Test Cisco Switch Connection
+- name: Create New VLAN 10 on All Switches
   hosts: all
   gather_facts: no
   connection: network_cli
 
   tasks:
-    - name: Run show version command
-      cisco.ios.ios_command:
-        commands:
-          - show version
-      register: output
+    - name: Create VLAN 10
+      cisco.ios.ios_vlan:
+        vlan_id:70
+        name: Data_Network
+        state: present
 
-    - name: Display output
-      debug:
-        var: output.stdout_lines
+    - name: Save configuration
+      cisco.ios.ios_config:
+        save_when: always
