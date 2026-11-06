@@ -4,11 +4,11 @@
   gather_facts: no
   connection: network_cli
   vars:
-    ansible_network_os: cisco.ios
+    ansible_network_os: ios
 
   tasks:
     - name: Create VLAN 70 and save config
-      cisco.ios.ios_command:
+      ios_command:
         commands:
           - configure terminal
           - vlan 70
