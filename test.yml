@@ -1,16 +1,13 @@
 ---
-- name: Create New VLAN 70 on All Switches
+- name: Create VLAN 70 on Cisco Switches
   hosts: all
   gather_facts: no
   connection: network_cli
 
   tasks:
-    - name: Create VLAN 10
-      cisco.ios.ios_vlan:
-        vlan_id: 70
-        name: Data_Network
-        state: present
-
-    - name: Save configuration
+    - name: Configure VLAN 70 via CLI
       cisco.ios.ios_config:
+        lines:
+          - vlan 70
+          - name Data_Network
         save_when: always
